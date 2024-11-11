@@ -14,19 +14,21 @@ import java.util.List;
 public class FileManagement {
 
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    List<Product> productsList = new ArrayList<>();
+    List<PromotionDetails> promotionsList = new ArrayList<>();
 
-    public void productOpen() throws IOException {
+    public List<Product> productOpen() throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader(productFile));
         productReadFile(reader);
+        return productsList;
     }
 
     private void productReadFile(BufferedReader reader) throws IOException {
-        List<Product> products = new ArrayList<>();
         String line = reader.readLine();
         while ((line = reader.readLine()) != null) {
             String[] data = line.split(",");
             if (data.length == 4) {
-                productDataParsing(data, products);
+                productDataParsing(data, productsList);
             }
         }
         reader.close();
@@ -40,20 +42,18 @@ public class FileManagement {
         products.add(new Product(name, price, quantity, promotion));
     }
 
-    public void promotionOpen() throws IOException {
+    public List<PromotionDetails> promotionOpen() throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader(promotionFile));
         promotionReadFile(reader);
+        return promotionsList;
     }
 
     private void promotionReadFile(BufferedReader reader) throws IOException {
-        List<PromotionDetails> promotionsList = new ArrayList<>();
         String line = reader.readLine();
-
         while ((line = reader.readLine()) != null) {
             String[] data = line.split(",");
             if (data.length == 5) {
-                promotionDataParsing(data,promotionsList);
-
+                promotionDataParsing(data, promotionsList);
             }
         }
         reader.close();

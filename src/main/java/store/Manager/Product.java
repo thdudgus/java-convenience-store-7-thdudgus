@@ -1,5 +1,12 @@
 package store.Manager;
 
+import static store.Constants.monetaryUnit;
+import static store.Constants.noStock;
+import static store.Constants.noStockNumber;
+import static store.Constants.thing;
+
+import java.text.NumberFormat;
+
 public class Product {
     public String getPromotion;
     private String name;
@@ -18,15 +25,30 @@ public class Product {
         return name;
     }
 
-    public int getPrice() {
+    public String getPrice() {
+        return NumberFormat.getInstance().format(price) + monetaryUnit;
+    }
+
+    public int getPriceInt(){
         return price;
     }
 
-    public int getQuantity() {
+    public String getQuantity() {
+        String quantities = String.valueOf(quantity);
+        if (quantities.equals(noStockNumber))
+            quantities = noStock;
+        else
+            quantities = quantities + thing;
+        return quantities;
+    }
+
+    public int getQuantityInt(){
         return quantity;
     }
 
     public String getPromotion() {
+        if (promotion==null)
+            promotion = " ";
         return promotion;
     }
 }
