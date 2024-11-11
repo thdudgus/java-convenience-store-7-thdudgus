@@ -2,9 +2,11 @@ package store;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import java.io.IOException;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
+import store.Exception.InvalidInputFormatException;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertNowTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -66,8 +68,9 @@ class ApplicationTest extends NsTest {
     public void runMain() {
         try {
             Application.main(new String[]{});
-        } catch (IOException e) {
+        } catch (IOException | InvalidInputFormatException e) {
             throw new RuntimeException(e);
         }
     }
+
 }

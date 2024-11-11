@@ -1,8 +1,8 @@
 package store.View;
 
 import static store.Constants.Welcome;
+import static store.Constants.askPurchase;
 
-import java.text.NumberFormat;
 import java.util.List;
 import store.Manager.Product;
 
@@ -15,5 +15,10 @@ public class Output {
         for (Product product : products) {
             System.out.println(product.getName() + " " + product.getPrice() + " " + product.getQuantity() + " " + product.getPromotion());
         }
+        System.out.println();
+    }
+
+    public void askPurchase() {
+        System.out.println(askPurchase);
     }
 }
