@@ -1,7 +1,7 @@
 package store.View;
 
-import static store.Constants.Welcome;
-import static store.Constants.askPurchase;
+import static store.Domain.Constants.Welcome;
+import static store.Domain.Constants.askPurchase;
 
 import java.util.List;
 import store.Manager.Product;

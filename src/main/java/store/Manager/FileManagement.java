@@ -1,7 +1,7 @@
 package store.Manager;
 
-import static store.Constants.productFile;
-import static store.Constants.promotionFile;
+import static store.Domain.Constants.productFile;
+import static store.Domain.Constants.promotionFile;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

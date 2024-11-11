@@ -1,9 +1,9 @@
 package store.Manager;
 
-import static store.Constants.monetaryUnit;
-import static store.Constants.noStock;
-import static store.Constants.noStockNumber;
-import static store.Constants.thing;
+import static store.Domain.Constants.monetaryUnit;
+import static store.Domain.Constants.noStock;
+import static store.Domain.Constants.noStockNumber;
+import static store.Domain.Constants.thing;
 
 import java.text.NumberFormat;
 
@@ -29,26 +29,28 @@ public class Product {
         return NumberFormat.getInstance().format(price) + monetaryUnit;
     }
 
-    public int getPriceInt(){
+    public int getPriceInt() {
         return price;
     }
 
     public String getQuantity() {
         String quantities = String.valueOf(quantity);
-        if (quantities.equals(noStockNumber))
+        if (quantities.equals(noStockNumber)) {
             quantities = noStock;
-        else
+        } else {
             quantities = quantities + thing;
+        }
         return quantities;
     }
 
-    public int getQuantityInt(){
+    public int getQuantityInt() {
         return quantity;
     }
 
     public String getPromotion() {
-        if (promotion==null)
+        if (promotion == null) {
             promotion = " ";
+        }
         return promotion;
     }
 }

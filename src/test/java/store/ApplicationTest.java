@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
 import store.Exception.InvalidInputFormatException;
+import store.Exception.NonExistentProduct;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertNowTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -68,7 +69,7 @@ class ApplicationTest extends NsTest {
     public void runMain() {
         try {
             Application.main(new String[]{});
-        } catch (IOException | InvalidInputFormatException e) {
+        } catch (IOException | InvalidInputFormatException | NonExistentProduct e) {
             throw new RuntimeException(e);
         }
     }
