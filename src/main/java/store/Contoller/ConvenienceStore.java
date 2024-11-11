@@ -31,15 +31,18 @@ public class ConvenienceStore {
         openForSale(products);
 
         String inputPurchase;
-        List<ProductPurchase> productPurchases;
+        List<ProductPurchase> productPurchases = List.of();
         while (true) {
             try{
                 output.askPurchase();
                 inputPurchase = input.responsePurchase();
                 productPurchases = parsingPurchase.parse(inputPurchase);
+                System.out.println("Parsed product purchases: " + productPurchases);
                 validation.stock(productPurchases, products);
+
                 break;
             }catch (InvalidInputFormatException | NullInputException | NonExistentProduct | ExcessQuantity e) {
+                productPurchases.clear();
                 System.out.println(e.getMessage());
             }
         }

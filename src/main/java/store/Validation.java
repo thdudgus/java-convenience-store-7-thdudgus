@@ -33,20 +33,21 @@ public class Validation {
 
     private void nonExistent(ProductPurchase purchase, List<Product> productList)
             throws NonExistentProduct, ExcessQuantity {
-        Product matchedProduct = productList.stream()
+        int totalQuantity = 0;
+        totalQuantity = productList.stream()
                 .filter(product -> product.getName().equals(purchase.getName()))
-                .findFirst()
-                .orElse(null);
+                .mapToInt(Product::getQuantityInt)
+                .sum();
 
-        if (matchedProduct == null) {
+        if (totalQuantity == 0) {
             throw new NonExistentProduct(nonExistentProduct);
         }
-        excess(purchase, productList, matchedProduct);
+        excess(purchase, totalQuantity);
     }
 
-    private void excess(ProductPurchase purchase, List<Product> productList, Product matchedProduct)
+    private void excess(ProductPurchase purchase, int totalQuantity)
             throws ExcessQuantity {
-        if (purchase.getQuantity() > matchedProduct.getQuantityInt()) {
+        if (purchase.getQuantity() > totalQuantity) {
             throw new ExcessQuantity(excessQuantity);
         }
     }
