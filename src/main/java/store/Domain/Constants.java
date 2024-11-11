@@ -15,4 +15,18 @@ public class Constants {
 
     public static final String comma = ",";
     public static final String hyphen = "-";
+    public static final String space = " ";
+    public static final String seperater = "\n";
+
+    public static final String AdditionalQuantity = "현재 %s은(는) %d개를 무료로 더 받을 수 있습니다. 추가하시겠습니까? (Y/N)";
+    public static final String isMembership = "멤버십 할인을 받으시겠습니까? (Y/N)";
+
+    public static final String firstRecipeLine = "==============W 편의점================";
+    public static final String secondRecipeLine = "상품명\t\t수량\t금액";
+    public static final String freeLine = "=============증\t정===============";
+    public static final String Line = "====================================";
+    public static final String total = "총구매액";
+    public static final String eventDiscount = "행사할인";
+    public static final String membershipDiscount = "멤버십할인";
+    public static final String money = "내실 돈";
 }

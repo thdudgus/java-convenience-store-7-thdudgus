@@ -1,5 +1,6 @@
 package store.Manager;
 
+import static store.Domain.Constants.comma;
 import static store.Domain.Constants.productFile;
 import static store.Domain.Constants.promotionFile;
 
@@ -10,6 +11,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class FileManagement {
 
@@ -26,7 +28,7 @@ public class FileManagement {
     private void productReadFile(BufferedReader reader) throws IOException {
         String line = reader.readLine();
         while ((line = reader.readLine()) != null) {
-            String[] data = line.split(",");
+            String[] data = line.split(comma);
             if (data.length == 4) {
                 productDataParsing(data, productsList);
             }
@@ -51,7 +53,7 @@ public class FileManagement {
     private void promotionReadFile(BufferedReader reader) throws IOException {
         String line = reader.readLine();
         while ((line = reader.readLine()) != null) {
-            String[] data = line.split(",");
+            String[] data = line.split(comma);
             if (data.length == 5) {
                 promotionDataParsing(data, promotionsList);
             }
@@ -68,6 +70,20 @@ public class FileManagement {
 
         Promotion promotion = Promotion.fromName(promoName); // 프로모션 이름을 enum으로 변환
         promotionsList.add(new PromotionDetails(promotion, startDate, endDate));  // PromotionDetails 객체 생성 후 리스트에 추가
+    }
+
+    public boolean updateProduct(String name, int newQuantity) {
+        Optional<Product> productOpt = productsList.stream()
+                .filter(product -> product.getName().equals(name))
+                .findFirst();
+
+        if (productOpt.isPresent()) {
+            Product product = productOpt.get();
+            product.setQuantity(newQuantity);  // quantity만 변경
+            return true;
+        } else {
+            return false;
+        }
     }
 }
 

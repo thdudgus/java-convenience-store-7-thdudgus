@@ -53,4 +53,8 @@ public class Product {
         }
         return promotion;
     }
+
+    public void setQuantity(int newQuantity) {
+        this.quantity = newQuantity;
+    }
 }

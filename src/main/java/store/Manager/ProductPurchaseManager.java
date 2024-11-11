@@ -23,5 +23,9 @@ public class ProductPurchaseManager {
         public int getQuantity() {
             return quantity;
         }
+
+        public Object getProductName() {
+            return name;
+        }
     }
 }

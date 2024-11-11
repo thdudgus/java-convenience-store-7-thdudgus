@@ -6,6 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
+import store.Exception.InvalidInputException;
 import store.Exception.InvalidInputFormatException;
 import store.Exception.NonExistentProduct;
 
@@ -69,7 +70,7 @@ class ApplicationTest extends NsTest {
     public void runMain() {
         try {
             Application.main(new String[]{});
-        } catch (IOException | InvalidInputFormatException | NonExistentProduct e) {
+        } catch (IOException | InvalidInputFormatException | NonExistentProduct | InvalidInputException e) {
             throw new RuntimeException(e);
         }
     }

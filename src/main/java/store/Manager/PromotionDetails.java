@@ -24,4 +24,8 @@ public class PromotionDetails {
     public LocalDate getEndDate() {
         return endDate;
     }
+
+    public Object getName() {
+        return promotion;
+    }
 }

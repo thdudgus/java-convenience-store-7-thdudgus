@@ -10,14 +10,14 @@ import java.util.List;
 import store.Exception.ExcessQuantity;
 import store.Exception.InvalidInputFormatException;
 import store.Exception.NonExistentProduct;
-import store.Exception.NullInputException;
+import store.Exception.InvalidInputException;
 import store.Manager.Product;
 import store.Manager.ProductPurchaseManager.ProductPurchase;
 
 public class Validation {
-    public void order(String input) throws InvalidInputFormatException, NullInputException {
+    public void order(String input) throws InvalidInputFormatException, InvalidInputException {
         if (input == null || input.isEmpty()) {
-            throw new NullInputException(invalidInput);
+            throw new InvalidInputException(invalidInput);
         }
         if (!input.matches(PurchaseFormat)) {
             throw new InvalidInputFormatException(inputFormatError);
@@ -49,6 +49,12 @@ public class Validation {
             throws ExcessQuantity {
         if (purchase.getQuantity() > totalQuantity) {
             throw new ExcessQuantity(excessQuantity);
+        }
+    }
+
+    public void YN(String input) throws InvalidInputException {
+        if (!(input.equals('Y') || input.equals('y') || input.equals('N') || input.equals('n'))) {
+            throw new InvalidInputException(invalidInput);
         }
     }
 }
