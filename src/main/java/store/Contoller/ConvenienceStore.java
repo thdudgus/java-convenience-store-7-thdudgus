@@ -5,6 +5,7 @@ import static store.Constants.askPurchase;
 import java.io.IOException;
 import java.util.List;
 import store.Exception.InvalidInputFormatException;
+import store.Exception.NullInputException;
 import store.Manager.FileManagement;
 import store.Manager.Membership;
 import store.Manager.Product;
@@ -19,21 +20,24 @@ public class ConvenienceStore {
     Membership membership = new Membership();
     Output output = new Output();
     Input input = new Input();
+    ParsingPurchase parsingPurchase = new ParsingPurchase();
 
     public void run() throws IOException, InvalidInputFormatException {
         List<Product> products = fileManagement.productOpen();
         List<PromotionDetails> promotions = fileManagement.promotionOpen();
         openForSale(products);
+
+        String inputPurchase;
         while (true) {
             try{
                 output.askPurchase();
-                String inputPurchase = input.responsePurchase();
+                inputPurchase = input.responsePurchase();
                 break;
-            }catch (InvalidInputFormatException e) {
+            }catch (InvalidInputFormatException | NullInputException e) {
                 System.out.println(e.getMessage());
             }
         }
-
+        parsingPurchase.parse(inputPurchase);
     }
 
     private void openForSale(List<Product> products) {

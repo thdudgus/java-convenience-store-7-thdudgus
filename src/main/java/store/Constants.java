@@ -10,6 +10,9 @@ public class Constants {
     public static final String noStock = "재고 없음";
     public static final String noStockNumber = "0";
 
-    public static final String PurchaseFormat = "(\\[\\w+-\\d+])(,\\[\\w+-\\d+])*";
+    public static final String PurchaseFormat = "(\\[[\\w가-힣]+-\\d+])(,\\[[\\w가-힣]+-\\d+])*";
     public static final String askPurchase = "구매하실 상품명과 수량을 입력해주세요. (예: [사이다-2],[감자칩-1])";
+
+    public static final String comma = ",";
+    public static final String hyphen = "-";
 }
